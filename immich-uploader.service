@@ -1,0 +1,15 @@
+[Unit]
+Description=Upload new screenshots to Immich
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+Type=simple
+# Optional overrides (IMMICH_URL, IMMICH_API_KEY, WATCH_DIR, ...). The "-" means no error if missing.
+EnvironmentFile=-%h/.config/immich-uploader.env
+ExecStart="/home/frans/Documents/Seafile_proxmox/Seafile/My Library/misc/mini_projects/immich_uploader_service/watch.sh"
+Restart=always
+RestartSec=5
+
+[Install]
+WantedBy=default.target
